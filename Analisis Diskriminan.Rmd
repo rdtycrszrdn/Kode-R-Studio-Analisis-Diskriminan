@@ -1,0 +1,31 @@
+---
+title: "Analisis Diskriminan"
+author: "Arditya Criszardin"
+date: "2023-05-01"
+output: html_document
+---
+
+```{r}
+# Memasang paket "MASS" jika belum terpasang
+# install.packages("MASS")
+
+# Memuat data
+my_data <- read.csv("my_data.csv")
+
+# Memisahkan data menjadi variabel independen dan dependen
+x <- my_data[,1:4]
+y <- my_data[,5]
+
+# Melakukan Analisis Diskriminan dengan menggunakan paket "MASS"
+library(MASS)
+my_lda <- lda(x, y)
+
+# Menampilkan hasil Analisis Diskriminan
+print(my_lda)
+
+# Memprediksi kelas baru menggunakan model yang telah dibuat
+new_data <- data.frame(var1 = 3, var2 = 4, var3 = 5, var4 = 6)
+predict(my_lda, newdata = new_data)
+
+```
+
